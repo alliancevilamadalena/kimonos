@@ -29,7 +29,9 @@
     font-family: 'Inter', -apple-system, sans-serif;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
+  html { overflow-x: hidden; }
 
   /* ── HEADER BAR ── */
   .top-bar {
@@ -272,33 +274,77 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .top-bar { padding: 16px 20px; }
-    .top-bar-cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
-    .brand-name { font-size: 15px; }
-    .brand-sub { font-size: 10px; }
-    .wrapper { padding: 40px 20px 60px; }
-    .hero { margin-bottom: 48px; }
-    .title { font-size: clamp(40px, 12vw, 72px); }
-    .subtitle { font-size: 15px; }
+    .top-bar { padding: 14px 16px; gap: 12px; }
+    .top-bar-cta { padding: 7px 12px; font-size: 10px; letter-spacing: 1.2px; white-space: nowrap; }
+    .brand-name { font-size: 14px; letter-spacing: 1.5px; }
+    .brand-sub { font-size: 9px; letter-spacing: 3px; }
+    .wrapper { padding: 32px 18px 50px; }
+    .hero { margin-bottom: 40px; }
+    .eyebrow { font-size: 13px; letter-spacing: 4px; margin-bottom: 12px; }
+    .title { font-size: clamp(36px, 11vw, 56px); letter-spacing: 0.5px; }
+    .subtitle { font-size: 14px; }
+    .section-label { font-size: 12px; letter-spacing: 3px; }
 
-    .price-table, .price-table tbody, .price-table tr, .price-table td {
-      display: block; width: 100% !important;
+    /* ─── Tabela de preços → CARDS DE PRODUTO ───
+       Cada <tr> vira um card visualmente independente */
+    .price-table {
+      display: block;
+      border: none !important;
+      background: transparent !important;
     }
-    .header-row { display: none; }
-    .price-table tr { padding: 18px 20px; border-bottom: 1px solid var(--rule); }
-    .price-table tr:last-child { border-bottom: none; }
-    .col-product { padding: 0 0 8px 0; border: none; }
-    .col-price { padding: 0; text-align: left; border: none; }
+    .price-table tbody { display: block; }
+    .price-table tr {
+      display: block;
+      background: var(--black-2);
+      border: 1px solid var(--rule) !important;
+      margin-bottom: 12px;
+      padding: 16px 18px;
+      transition: border-color 0.2s;
+    }
+    .price-table tr:hover {
+      background: var(--black-2) !important;
+      border-color: var(--gold) !important;
+    }
 
+    /* Esconder header-row completamente em mobile */
+    .header-row, tr.header-row, .header-row td { display: none !important; }
+
+    /* Células viram blocos */
+    .price-table td { display: block; width: auto !important; padding: 0 !important; border: none !important; }
+
+    /* Produto: nome em cima */
+    .col-product {
+      margin-bottom: 10px;
+    }
+    .product-name { font-size: 15px; line-height: 1.35; }
+
+    /* Preço: embaixo, alinhado à esquerda, em destaque */
+    .col-price {
+      text-align: left !important;
+      padding-top: 8px !important;
+      border-top: 1px solid var(--rule) !important;
+    }
+    .price-value { font-size: 22px; }
+
+    /* Options */
     .options { grid-template-columns: 1fr; gap: 14px; }
     .option { padding: 28px 22px; }
     .option-title { font-size: 30px; }
 
+    /* PIX block */
     .pix-block { flex-direction: column; gap: 28px; padding: 28px 22px; }
     .qr-wrap { align-self: center; }
     .qr-wrap img { width: 150px; height: 150px; }
     .pix-key { font-size: 14px; letter-spacing: 0.8px; word-break: break-all; }
     .pix-beneficiary { font-size: 20px; }
+  }
+  @media (max-width: 540px) {
+    .top-bar { padding: 12px 14px; }
+    .top-bar-cta { padding: 6px 10px; font-size: 9px; letter-spacing: 1px; }
+    .brand-name { font-size: 13px; }
+    .brand-sub { font-size: 8px; }
+    .wrapper { padding: 28px 16px 40px; }
+    .title { font-size: clamp(32px, 10vw, 48px); }
   }
 
   /* ── LIGHTBOX ── */
