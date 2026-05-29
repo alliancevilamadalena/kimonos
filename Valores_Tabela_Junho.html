@@ -414,6 +414,91 @@
     .lightbox-caption { font-size: 14px; bottom: 16px; }
   }
 
+  /* ── CTA BLOCK (chamada inicial / banner pra galera Alliance) ── */
+  .cta-block {
+    background: var(--black-2);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--section-accent);
+    padding: 32px 36px;
+    margin-bottom: 48px;
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+  .cta-block-body { flex: 1; min-width: 0; }
+  .cta-block-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px; letter-spacing: 0.5px;
+    color: var(--section-accent); font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .cta-block-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; font-weight: 400;
+    color: var(--off-white); line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .cta-block-perks {
+    list-style: none;
+    padding: 0; margin: 0 0 4px 0;
+    display: flex; flex-direction: column;
+    gap: 8px;
+  }
+  .cta-block-perks li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--white); line-height: 1.5;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cta-block-perks li::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--section-accent);
+    color: #ffffff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+  }
+  .cta-block-btn {
+    flex-shrink: 0;
+    align-self: stretch;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    gap: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 600;
+    color: #ffffff;
+    background: var(--section-accent);
+    padding: 18px 28px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+    border: 1.5px solid var(--section-accent);
+  }
+  .cta-block-btn:hover {
+    background: #1f3416;
+    border-color: #1f3416;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .cta-block {
+      flex-direction: column;
+      gap: 22px;
+      padding: 26px 22px;
+      align-items: stretch;
+    }
+    .cta-block-title { font-size: 20px; }
+    .cta-block-text { font-size: 14px; }
+    .cta-block-perks li { font-size: 14px; }
+    .cta-block-btn { padding: 16px 24px; font-size: 13px; }
+  }
+
 </style>
 </head>
 <body>
@@ -434,6 +519,19 @@
     <div class="eyebrow">Alliance Vila Madalena · Loja</div>
     <div class="title">Kimonos <span>·</span> <span>Preços</span></div>
     <div class="subtitle">Preços de referência. Sujeito a disponibilidade de estoque.</div>
+  </div>
+
+  <!-- CTA INICIAL -->
+  <div class="cta-block">
+    <div class="cta-block-body">
+      <div class="cta-block-title">Que tal um kimono novo pra entrar com tudo no tatame?</div>
+      <div class="cta-block-text">Pra você que treina com a gente, separamos condições especiais:</div>
+      <ul class="cta-block-perks">
+        <li>10% de desconto no PIX</li>
+        <li>Parcelamento em até 2× sem juros no cartão</li>
+      </ul>
+    </div>
+    <a href="https://wa.me/5511943428639" target="_blank" class="cta-block-btn">Falar com a loja →</a>
   </div>
 
   <!-- Alliance -->
