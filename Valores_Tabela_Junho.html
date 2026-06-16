@@ -14,15 +14,15 @@
     --black-3: #ebe4d5;          /* hover sutil */
     --white: #1c1814;            /* texto principal (off-black quente) */
     --off-white: #2a241e;
-    --mist: #7a7268;             /* texto secundário (cinza-café) */
-    --mist-dim: #a89e8f;
+    --mist: #6b6358;             /* texto secundário (cinza-café) */
+    --mist-dim: #9a907f;
     --rule: #e0d9cc;             /* bordas (bege suave) */
     --rule-soft: rgba(28, 24, 20, 0.08);
 
     /* Destaque principal — ocre saturado vibrante */
-    --gold: #e09020;             /* ocre + saturado */
-    --gold-dim: #b87010;
-    --gold-soft: rgba(224, 144, 32, 0.18);
+    --gold: #c87718;             /* ocre + saturado */
+    --gold-dim: #a05f0c;
+    --gold-soft: rgba(200, 119, 24, 0.15);
 
     /* Tons de apoio — Vila Madalena happy */
     --green: #4caf3f;            /* verde-limão fresco (pra PIX) */
@@ -33,23 +33,32 @@
     --section-accent-soft: rgba(45, 74, 31, 0.18);
   }
   body {
-    background: var(--black);
+    background:
+      radial-gradient(1200px 600px at 85% -5%, rgba(200,119,24,0.06), transparent 60%),
+      radial-gradient(1000px 500px at -10% 105%, rgba(45,74,31,0.05), transparent 60%),
+      var(--black);
+    background-attachment: fixed;
     color: var(--white);
     font-family: 'Inter', -apple-system, sans-serif;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  html { overflow-x: hidden; }
+  html { overflow-x: hidden; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   /* ── HEADER BAR ── */
   .top-bar {
-    background: var(--black-2);
+    background: rgba(255,255,255,0.82);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 1px solid var(--rule);
     padding: 20px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 1px 0 rgba(28,24,20,0.02);
   }
   .brand {
     display: flex; flex-direction: column;
@@ -73,10 +82,11 @@
     color: var(--gold);
     border: 1.5px solid var(--gold);
     padding: 10px 22px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all 0.25s ease;
   }
-  .top-bar-cta:hover { background: var(--gold); color: #1c1814; }
+  .top-bar-cta:hover { background: var(--gold); color: #1c1814; box-shadow: 0 6px 18px rgba(200,119,24,0.28); transform: translateY(-1px); }
 
   /* ── WRAPPER ── */
   .wrapper { max-width: 1200px; margin: 0 auto; padding: 72px 32px 100px; }
@@ -124,9 +134,12 @@
 
   /* ── PRICE TABLE ── */
   .price-table {
-    width: 100%; border-collapse: collapse;
+    width: 100%; border-collapse: separate; border-spacing: 0;
     background: var(--black-2);
     border: 1px solid var(--rule);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(28,24,20,0.04), 0 12px 32px -16px rgba(28,24,20,0.12);
   }
   .price-table tr {
     border-bottom: 1px solid var(--rule);
@@ -142,11 +155,11 @@
     border-bottom: 1px solid var(--rule); font-weight: 500;
   }
   .col-product {
-    padding: 22px 24px; vertical-align: middle;
+    padding: 14px 24px; vertical-align: middle;
     width: 75%;
   }
   .col-price {
-    padding: 22px 28px 22px 20px; vertical-align: middle;
+    padding: 14px 28px 14px 20px; vertical-align: middle;
     width: 25%; text-align: right; white-space: nowrap;
     border-left: 1px solid var(--rule);
   }
@@ -195,14 +208,17 @@
   .option {
     background: var(--black-2);
     border: 1px solid var(--rule);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(28,24,20,0.04), 0 12px 32px -16px rgba(28,24,20,0.12);
     padding: 36px 32px;
     display: flex; flex-direction: column; gap: 14px;
     position: relative;
-    transition: border-color 0.3s, transform 0.3s;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
   }
   .option:hover {
     border-color: var(--gold);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -20px rgba(200,119,24,0.32);
   }
   .option-tag {
     font-family: 'Oswald', sans-serif;
@@ -210,6 +226,7 @@
     text-transform: uppercase; font-weight: 500;
     align-self: flex-start;
     padding: 5px 10px;
+    border-radius: 6px;
   }
   .option.pix .option-tag { color: var(--gold); background: var(--gold-soft); }
   .option.cartao .option-tag { color: var(--mist); background: var(--rule); }
@@ -231,6 +248,29 @@
     color: var(--mist); line-height: 1.65;
     border-top: 1px solid var(--rule);
     padding-top: 14px; margin-top: 8px;
+  }
+  .install-lines {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-top: 4px;
+  }
+  .install-line {
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .install-line .brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--mist);
+    font-weight: 500; min-width: 78px;
+  }
+  .install-line .cond {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px; letter-spacing: 1px;
+    color: var(--gold); font-weight: 600;
+  }
+  .install-line .cond small {
+    font-size: 13px; letter-spacing: 1px;
+    color: var(--mist); font-weight: 500;
+    margin-left: 4px;
   }
 
   /* ── PIX BLOCK ── */
@@ -372,6 +412,7 @@
   .lightbox img {
     max-width: 100%; max-height: 100%;
     object-fit: contain;
+    border-radius: 12px;
     box-shadow: 0 10px 60px rgba(28, 24, 20, 0.5);
     cursor: default;
     border: 1px solid rgba(245, 241, 232, 0.2);
@@ -382,7 +423,7 @@
     width: 44px; height: 44px;
     background: transparent;
     border: 1.5px solid rgba(245, 241, 232, 0.5);
-    border-radius: 0;
+    border-radius: 8px;
     color: #f5f1e8;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
@@ -419,6 +460,8 @@
     background: var(--black-2);
     border: 1px solid var(--rule);
     border-left: 4px solid var(--section-accent);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(28,24,20,0.04), 0 12px 32px -16px rgba(45,74,31,0.16);
     padding: 32px 36px;
     margin-bottom: 48px;
     display: flex;
@@ -673,6 +716,7 @@
         <td class="col-price"><div class="price-value">R$ 779,90</div></td>
       </tr>
     </table>
+    <div class="section-note">Linha Alliance: parcelamento exclusivo em até 3× sem juros no cartão de crédito.</div>
     <details class="size-guide">
       <summary>Tabela de Tamanhos</summary>
       <div class="size-cat">Masculino</div>
@@ -756,6 +800,10 @@
       <tr>
         <td class="col-product"><div class="product-name"><a href="https://raw.githubusercontent.com/eduhanford/kimonos-fotos/main/Kimono_Alliance_Eagle_JiuJitsu_Preto.webp">Kimono Alliance Eagle Jiu Jitsu Gi — Azul ou Preto</a></div></td>
         <td class="col-price"><div class="price-value">R$ 1.077,47</div></td>
+      </tr>
+      <tr>
+        <td class="col-product"><div class="product-name"><a href="https://raw.githubusercontent.com/eduhanford/kimonos-fotos/main/Rash%20Guard%20New%20Style%20Manga%20Curta.webp">Rash Guard Alliance New Style Manga Curta</a></div></td>
+        <td class="col-price"><div class="price-value">R$ 334,30</div></td>
       </tr>
     </table>
     <details class="size-guide">
@@ -845,7 +893,7 @@
         <td class="col-price"><div class="price-value">R$ 1.455,00</div></td>
       </tr>
     </table>
-    <div class="section-note">Linha Fuji: parcelamento exclusivo em até 6× no cartão de crédito.</div>
+    <div class="section-note">Linha Fuji: parcelamento exclusivo em até 6× sem juros no cartão de crédito.</div>
   </div>
 
   <!-- Kingz -->
@@ -934,8 +982,12 @@
     <div class="option cartao">
       <div class="option-tag">Parcelado</div>
       <div class="option-title">Cartão de Crédito</div>
-      <div class="option-highlight">2× SEM JUROS</div>
-      <div class="option-desc">Parcelamento em duas vezes no cartão de crédito, sem acréscimos.</div>
+      <div class="install-lines">
+        <div class="install-line"><span class="brand">Alliance</span><span class="cond">3× <small>sem juros</small></span></div>
+        <div class="install-line"><span class="brand">Fuji</span><span class="cond">6× <small>sem juros</small></span></div>
+        <div class="install-line"><span class="brand">Demais</span><span class="cond">2× <small>sem juros</small></span></div>
+      </div>
+      <div class="option-desc">Parcelamento sem juros no cartão de crédito conforme a linha do kimono. Demais produtos em até 2× sem juros.</div>
     </div>
   </div>
 
