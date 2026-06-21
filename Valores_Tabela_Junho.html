@@ -4,39 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produtos · Alliance Vila Madalena</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    /* Tons base — mantém o linho/papel acolhedor */
-    --black: #f5f1e8;            /* fundo principal (linho) */
-    --black-2: #ffffff;          /* fundo de cards/tabelas (branco) */
-    --black-3: #ebe4d5;          /* hover sutil */
-    --white: #1c1814;            /* texto principal (off-black quente) */
-    --off-white: #2a241e;
-    --mist: #6b6358;             /* texto secundário (cinza-café) */
-    --mist-dim: #9a907f;
-    --rule: #e0d9cc;             /* bordas (bege suave) */
-    --rule-soft: rgba(28, 24, 20, 0.08);
+    /* ===== 60% CLARO (Earthy Neutrals) ===== */
+    --black: #f4ead9;            /* fundo creme */
+    --black-2: #fffdf8;          /* cards (branco quente) */
+    --black-3: #ece0cb;          /* hover */
+    --white: #28302a;            /* texto forte */
+    --off-white: #525b50;        /* texto secundário */
+    --mist: #898c7e;             /* texto apagado */
+    --mist-dim: #a8a899;
+    --rule: #e4d9c6;             /* bordas */
+    --rule-soft: rgba(47,74,63,0.08);
 
-    /* Destaque principal — ocre saturado vibrante */
-    --gold: #c87718;             /* ocre + saturado */
-    --gold-dim: #a05f0c;
-    --gold-soft: rgba(200, 119, 24, 0.15);
+    /* ===== 25% verde estrutura · 15% terracota pop ===== */
+    --gold: #a04a2a;             /* terracota texto — preços/labels/pop */
+    --gold-dim: #c55f43;
+    --gold-soft: rgba(197,95,67,0.14);
+    --teal: #c55f43;             /* botão principal = terracota (claro) */
+    --teal-dim: #a94e36;
+    --accent: #6e8c77; --accent-text: #46604f; --accent-soft: rgba(110,140,119,0.16);
+    --green-deep: #363b2f; --slate: #7e9b86;
+    --cta: #c55f43; --cta-text: #a04a2a; --on-cta: #fff6f0; --on-accent: #f7faf5;
 
     /* Tons de apoio — Vila Madalena happy */
     --green: #4caf3f;            /* verde-limão fresco (pra PIX) */
-    --blue: #1e88e5;             /* azul-piscina elétrico (pra Cartão) */
+    --blue: #6fa8d6;             /* azul-piscina elétrico (pra Cartão) */
 
-    /* Section labels — verde-musgo escuro (boutique) */
-    --section-accent: #2d4a1f;
-    --section-accent-soft: rgba(45, 74, 31, 0.18);
+    /* Section labels — terracota */
+    --section-accent: #a04a2a;
+    --section-accent-soft: rgba(197,95,67,0.18);
   }
   body {
-    background:
-      radial-gradient(1200px 600px at 85% -5%, rgba(200,119,24,0.06), transparent 60%),
-      radial-gradient(1000px 500px at -10% 105%, rgba(45,74,31,0.05), transparent 60%),
-      var(--black);
+    background: var(--black);
     background-attachment: fixed;
     color: var(--white);
     font-family: 'Inter', -apple-system, sans-serif;
@@ -49,16 +51,14 @@
 
   /* ── HEADER BAR ── */
   .top-bar {
-    background: rgba(255,255,255,0.82);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    backdrop-filter: saturate(180%) blur(12px);
-    border-bottom: 1px solid var(--rule);
+    background: var(--green-deep);
+    border-bottom: 1px solid #c58c6d;
     padding: 20px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky; top: 0; z-index: 50;
-    box-shadow: 0 1px 0 rgba(28,24,20,0.02);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.02);
   }
   .brand {
     display: flex; flex-direction: column;
@@ -67,12 +67,12 @@
   .brand-name {
     font-family: 'Oswald', sans-serif;
     font-weight: 600; font-size: 18px;
-    letter-spacing: 2px; color: var(--white);
+    letter-spacing: 2px; color: #fbf7ef;
   }
   .brand-sub {
     font-family: 'Oswald', sans-serif;
     font-weight: 400; font-size: 11px;
-    letter-spacing: 4px; color: var(--mist);
+    letter-spacing: 4px; color: #e0c9b2;
     margin-top: 4px;
   }
   .top-bar-cta {
@@ -86,34 +86,47 @@
     text-decoration: none;
     transition: all 0.25s ease;
   }
-  .top-bar-cta:hover { background: var(--gold); color: #1c1814; box-shadow: 0 6px 18px rgba(200,119,24,0.28); transform: translateY(-1px); }
+  .top-bar-cta:hover { background: var(--gold); color: var(--on-cta); box-shadow: 0 6px 18px rgba(212,98,63,0.28); transform: translateY(-1px); }
 
   /* ── WRAPPER ── */
-  .wrapper { max-width: 1200px; margin: 0 auto; padding: 72px 32px 100px; }
+  .wrapper { max-width: 460px; margin: 0 auto; padding: 72px 32px 100px; }
 
   /* ── HERO HEADER ── */
   .hero {
     margin-bottom: 72px;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;
   }
+  .hero-text { flex: 1; min-width: 0; }
+  .hero-btn {
+    flex-shrink: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 500;
+    color: var(--ink-2); background: transparent;
+    border: 1px solid var(--rule); border-radius: 8px;
+    padding: 9px 16px; text-decoration: none;
+    white-space: nowrap; transition: all 0.2s;
+  }
+  .hero-btn:hover { border-color: var(--mist); color: var(--ink, #28302a); }
   .eyebrow {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic; font-size: 16px;
-    letter-spacing: 6px; text-transform: uppercase;
+    font-style: italic; font-size: 13px;
+    letter-spacing: 4px; text-transform: uppercase;
     color: var(--mist); margin-bottom: 18px;
   }
   .title {
     font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: clamp(56px, 9vw, 110px);
-    color: var(--white); line-height: 0.92;
-    letter-spacing: 1px; text-transform: uppercase;
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--white); line-height: 1.1;
+    letter-spacing: .5px; text-transform: uppercase;
     margin-bottom: 20px;
   }
   .title span { color: var(--gold); }
   .subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 17px; font-weight: 300;
-    color: var(--mist); line-height: 1.6;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 18px; font-weight: 400;
+    color: var(--mist); line-height: 1.5;
     max-width: 640px;
   }
 
@@ -139,7 +152,7 @@
     border: 1px solid var(--rule);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 1px 2px rgba(28,24,20,0.04), 0 12px 32px -16px rgba(28,24,20,0.12);
+    box-shadow: 0 1px 2px rgba(47,74,63,0.05), 0 12px 32px -16px rgba(47,74,63,0.18);
   }
   .price-table tr {
     border-bottom: 1px solid var(--rule);
@@ -219,7 +232,7 @@
     background: var(--black-2);
     border: 1px solid var(--rule);
     border-radius: 16px;
-    box-shadow: 0 1px 2px rgba(28,24,20,0.04), 0 12px 32px -16px rgba(28,24,20,0.12);
+    box-shadow: 0 1px 2px rgba(47,74,63,0.05), 0 12px 32px -16px rgba(47,74,63,0.18);
     padding: 36px 32px;
     display: flex; flex-direction: column; gap: 14px;
     position: relative;
@@ -228,7 +241,7 @@
   .option:hover {
     border-color: var(--gold);
     transform: translateY(-3px);
-    box-shadow: 0 18px 40px -20px rgba(200,119,24,0.32);
+    box-shadow: 0 18px 40px -20px rgba(212,98,63,0.32);
   }
   .option-tag {
     font-family: 'Oswald', sans-serif;
@@ -294,7 +307,8 @@
   }
   .qr-wrap {
     flex-shrink: 0;
-    background: #ffffff;
+    background: #fffdf8;
+    border: 1px solid var(--rule);
     padding: 16px;
   }
   .qr-wrap img { width: 180px; height: 180px; object-fit: contain; display: block; }
@@ -332,7 +346,7 @@
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
+  @media (min-width: 0px) {
     .top-bar { padding: 14px 16px; gap: 12px; }
     .top-bar-cta { padding: 7px 12px; font-size: 10px; letter-spacing: 1.2px; white-space: nowrap; }
     .brand-name { font-size: 14px; letter-spacing: 1.5px; }
@@ -340,7 +354,7 @@
     .wrapper { padding: 32px 18px 50px; }
     .hero { margin-bottom: 40px; }
     .eyebrow { font-size: 13px; letter-spacing: 4px; margin-bottom: 12px; }
-    .title { font-size: clamp(36px, 11vw, 56px); letter-spacing: 0.5px; }
+    .title { font-size: 28px; letter-spacing: 0.5px; }
     .subtitle { font-size: 14px; }
     .section-label { font-size: 12px; letter-spacing: 3px; }
 
@@ -397,13 +411,13 @@
     .pix-key { font-size: 14px; letter-spacing: 0.8px; word-break: break-all; }
     .pix-beneficiary { font-size: 20px; }
   }
-  @media (max-width: 540px) {
+  @media (min-width: 0px) {
     .top-bar { padding: 12px 14px; }
     .top-bar-cta { padding: 6px 10px; font-size: 9px; letter-spacing: 1px; }
     .brand-name { font-size: 13px; }
     .brand-sub { font-size: 8px; }
     .wrapper { padding: 28px 16px 40px; }
-    .title { font-size: clamp(32px, 10vw, 48px); }
+    .title { font-size: 28px; }
   }
 
   /* ── LIGHTBOX ── */
@@ -411,7 +425,7 @@
     display: none;
     position: fixed; top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(28, 24, 20, 0.85);
+    background: rgba(255,255,255,0.85);
     z-index: 1000;
     justify-content: center; align-items: center;
     padding: 40px 20px;
@@ -423,7 +437,7 @@
     max-width: 100%; max-height: 100%;
     object-fit: contain;
     border-radius: 12px;
-    box-shadow: 0 10px 60px rgba(28, 24, 20, 0.5);
+    box-shadow: 0 10px 60px rgba(255,255,255,0.5);
     cursor: default;
     border: 1px solid rgba(245, 241, 232, 0.2);
   }
@@ -432,9 +446,9 @@
     top: 24px; right: 28px;
     width: 44px; height: 44px;
     background: transparent;
-    border: 1.5px solid rgba(245, 241, 232, 0.5);
+    border: 1.5px solid rgba(40, 48, 42, 0.3);
     border-radius: 8px;
-    color: #f5f1e8;
+    color: #28302a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     cursor: pointer;
@@ -450,7 +464,7 @@
     position: absolute;
     bottom: 28px; left: 0; right: 0;
     text-align: center;
-    color: rgba(245, 241, 232, 0.9);
+    color: var(--ink);
     font-family: 'Cormorant Garamond', serif;
     font-size: 16px; font-style: italic;
     letter-spacing: 1px;
@@ -459,7 +473,7 @@
   @keyframes fadeIn {
     from { opacity: 0; } to { opacity: 1; }
   }
-  @media (max-width: 640px) {
+  @media (min-width: 0px) {
     .lightbox { padding: 60px 12px; }
     .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 18px; }
     .lightbox-caption { font-size: 14px; bottom: 16px; }
@@ -469,9 +483,9 @@
   .cta-block {
     background: var(--black-2);
     border: 1px solid var(--rule);
-    border-left: 4px solid var(--section-accent);
+    border-left: 4px solid var(--accent);
     border-radius: 16px;
-    box-shadow: 0 1px 2px rgba(28,24,20,0.04), 0 12px 32px -16px rgba(45,74,31,0.16);
+    box-shadow: 0 1px 2px rgba(47,74,63,0.05), 0 12px 32px -16px rgba(47,74,63,0.18);
     padding: 32px 36px;
     margin-bottom: 48px;
     display: flex;
@@ -509,8 +523,8 @@
     content: '✓';
     flex-shrink: 0;
     width: 22px; height: 22px;
-    background: var(--section-accent);
-    color: #ffffff;
+    background: var(--accent);
+    color: var(--on-accent);
     border-radius: 50%;
     display: inline-flex;
     align-items: center; justify-content: center;
@@ -525,17 +539,17 @@
     font-family: 'Oswald', sans-serif;
     font-size: 14px; letter-spacing: 2px;
     text-transform: uppercase; font-weight: 600;
-    color: #ffffff;
-    background: var(--section-accent);
+    color: var(--on-cta);
+    background: var(--teal);
     padding: 18px 28px;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
     white-space: nowrap;
-    border: 1.5px solid var(--section-accent);
+    border: 1.5px solid var(--teal);
   }
   .cta-block-btn:hover {
-    background: #1f3416;
-    border-color: #1f3416;
+    background: var(--teal-dim);
+    border-color: var(--teal-dim);
     transform: translateY(-2px);
   }
 
@@ -651,7 +665,7 @@
     color: var(--white);
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 0px) {
     .size-guide > summary { font-size: 11px; letter-spacing: 1.5px; }
     .size-table th, .size-table td { padding: 9px 12px; font-size: 13px; }
     .cta-block {
@@ -666,26 +680,29 @@
     .cta-block-btn { padding: 16px 24px; font-size: 13px; }
   }
 
-</style>
+.credito{text-align:center;margin-top:32px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.5px;color:var(--mist-dim,#6a6a6a)}
+.credito .marca{font-family:'Oswald',sans-serif;font-style:normal;font-weight:500;letter-spacing:1px;color:#46604f;text-decoration:none;transition:opacity .15s}
+.credito a.marca:active{opacity:.6}
+.credito sup{font-style:normal;font-size:.62em}
+.sheet{background:transparent;border:none;border-radius:16px;padding:22px 16px;margin-top:6px;box-shadow:none}
+  /* faixa superior compartilhada (header-professor.js) tematizada p/ App do Aluno */
+  .avm-topbar{--black:#363b2f;--white:#fbf7ef;--gold:#c58c6d;--gold-text:#e0c9b2;--mist:#cbc4b2;--rule:rgba(255,255,255,.18)}</style>
+<script src="https://alliancevilamadalena.github.io/app/header-professor.js" data-sub="Loja"></script>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <div class="brand">
-    <div class="brand-name">ALLIANCE JIU JITSU</div>
-    <div class="brand-sub">VILA MADALENA</div>
-  </div>
-  <a href="https://wa.me/5511943428639" target="_blank" class="top-bar-cta">Loja</a>
-</div>
+<!-- faixa superior injetada por header-professor.js (compartilhada) -->
 
-<div class="wrapper">
+<div class="wrapper"><div class="sheet">
 
   <!-- HERO -->
   <div class="hero">
-    <div class="eyebrow">Alliance Vila Madalena · Loja</div>
-    <div class="title">Produtos <span>·</span> <span>Preços</span></div>
-    <div class="subtitle">Preços de referência. Sujeito a disponibilidade de estoque.</div>
+    <div class="hero-text">
+      <div class="eyebrow">Alliance Vila Madalena</div>
+      <div class="title">Produtos · <span>Preços</span></div>
+      <div class="subtitle">Preços de referência. Sujeito a disponibilidade de estoque.</div>
+    </div>
+    <a href="https://wa.me/5511943428639" target="_blank" class="hero-btn">Falar com a loja</a>
   </div>
 
   <!-- CTA INICIAL -->
@@ -1059,6 +1076,8 @@
     </div>
   </div>
 
+  </div>
+  <div class="credito">Developed by <a class="marca" href="https://wa.me/5511974858982?text=Ol%C3%A1!%20Vi%20o%20app%20da%20Alliance%20Vila%20Madalena%20e%20tenho%20interesse%20no%20sistema%20da%20the%20mat%20society." target="_blank" rel="noopener">the mat society<sup>&reg;</sup></a></div>
 </div>
 
 <!-- LIGHTBOX -->
