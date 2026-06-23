@@ -686,28 +686,8 @@
 .credito sup{font-style:normal;font-size:.62em}
 .sheet{background:transparent;border:none;border-radius:16px;padding:22px 16px;margin-top:6px;box-shadow:none}
   /* faixa superior compartilhada (header-professor.js) tematizada p/ App do Aluno */
-  .avm-topbar{--black:#363b2f;--white:#fbf7ef;--gold:#c58c6d;--gold-text:#e0c9b2;--mist:#cbc4b2;--rule:rgba(255,255,255,.18)}
-  /* botão de CTA encaixado no cabeçalho compartilhado (cor padrão clay do template) */
-  .avm-topbar .avm-tb-cta{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1.5px;font-weight:500;text-transform:uppercase;color:var(--gold-text,#e0c9b2);border:1.5px solid var(--gold,#c58c6d);padding:8px 16px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap;flex:0 0 auto;margin-left:auto}
-  .avm-topbar .avm-tb-cta:hover{background:var(--gold,#c58c6d);color:var(--black,#363b2f)}
-  @media(max-width:768px){.avm-topbar .avm-tb-cta{padding:7px 12px;font-size:10px;letter-spacing:1px}}</style>
-<script src="https://alliancevilamadalena.github.io/app/header-professor.js" data-sub="Loja"></script>
-<script>
-  /* Encaixa o botão "Falar com a loja" no cabeçalho compartilhado (injetado por header-professor.js). */
-  (function(){
-    var HREF='https://wa.me/5511943428639', LABEL='Falar com a loja', tries=0;
-    function add(){
-      var bar=document.querySelector('.avm-topbar');
-      if(!bar){ if(tries++<60){ setTimeout(add,40); } return; }
-      if(bar.querySelector('.avm-tb-cta')) return;
-      var a=document.createElement('a');
-      a.className='avm-tb-cta'; a.href=HREF; a.target='_blank'; a.rel='noopener';
-      a.textContent=LABEL;
-      bar.appendChild(a);
-    }
-    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', add); } else { add(); }
-  })();
-</script>
+  .avm-topbar{--black:#363b2f;--white:#fbf7ef;--gold:#c58c6d;--gold-text:#e0c9b2;--mist:#cbc4b2;--rule:rgba(255,255,255,.18)}</style>
+<script src="https://alliancevilamadalena.github.io/app/header-professor.js?v=20260623cta" data-sub="Loja" data-cta="Falar com a loja" data-cta-href="https://wa.me/5511943428639"></script>
 </head>
 <body>
 
