@@ -191,6 +191,39 @@
     color: var(--gold);
     border-bottom-color: var(--gold);
   }
+  /* ── MINIATURA DO PRODUTO (foto sempre visível, toque amplia) ── */
+  .product-row { display: flex; align-items: center; gap: 14px; }
+  .product-thumb-wrap {
+    position: relative; flex-shrink: 0;
+    width: 52px; height: 52px;
+    padding: 0; margin: 0; border: none; background: none;
+    cursor: zoom-in; display: block; line-height: 0;
+  }
+  .product-thumb {
+    width: 52px; height: 52px; display: block;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    background: var(--black-3);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .product-thumb-wrap:hover .product-thumb,
+  .product-thumb-wrap:focus-visible .product-thumb {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px -6px rgba(47,74,63,0.35);
+    border-color: var(--gold);
+  }
+  .product-thumb-zoom {
+    position: absolute; right: -5px; bottom: -5px;
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--gold); color: var(--on-cta);
+    border-radius: 50%;
+    border: 2px solid var(--black-2);
+    pointer-events: none;
+  }
+  .product-thumb-zoom svg { display: block; }
+  .product-body { flex: 1; min-width: 0; }
   .product-sizes {
     margin-top: 6px;
     font-family: 'Inter', sans-serif;
@@ -1087,6 +1120,45 @@
 </div>
 
 <script>
+  /* Monta a miniatura da foto em cada linha (a foto já mora no href do nome) */
+  document.querySelectorAll('.col-product').forEach(function(cell) {
+    var link = cell.querySelector('.product-name a');
+    if (!link) return;
+    var src = link.getAttribute('href');
+    var caption = link.textContent;
+
+    var row = document.createElement('div');
+    row.className = 'product-row';
+
+    var thumbBtn = document.createElement('button');
+    thumbBtn.type = 'button';
+    thumbBtn.className = 'product-thumb-wrap';
+    thumbBtn.setAttribute('aria-label', 'Ver foto: ' + caption);
+    thumbBtn.addEventListener('click', function() { openLightbox(src, caption); });
+
+    var thumb = document.createElement('img');
+    thumb.className = 'product-thumb';
+    thumb.src = src;
+    thumb.alt = caption;
+    thumb.loading = 'lazy';
+
+    var zoom = document.createElement('span');
+    zoom.className = 'product-thumb-zoom';
+    zoom.setAttribute('aria-hidden', 'true');
+    zoom.innerHTML = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="20" y1="20" x2="15.5" y2="15.5"/><line x1="10.5" y1="7.8" x2="10.5" y2="13.2"/><line x1="7.8" y1="10.5" x2="13.2" y2="10.5"/></svg>';
+
+    thumbBtn.appendChild(thumb);
+    thumbBtn.appendChild(zoom);
+
+    var body = document.createElement('div');
+    body.className = 'product-body';
+    while (cell.firstChild) { body.appendChild(cell.firstChild); }
+
+    row.appendChild(thumbBtn);
+    row.appendChild(body);
+    cell.appendChild(row);
+  });
+
   document.querySelectorAll('.product-name a').forEach(function(link) {
     link.addEventListener('click', function(e) {
       e.preventDefault();
